@@ -13,13 +13,13 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 
 	@Override
 	public String insert(Employee employee) {
-
+		
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		String status = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql:///octbatch", "root", "root123");
+			connection = DriverManager.getConnection("jdbc:mysql:///firstdatabase", "root", "sriram4321");
 			if (connection != null)
 				pstmt = connection.prepareStatement(SQLINSERTQUERY);
 			if (pstmt != null) {
@@ -28,7 +28,7 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 				pstmt.setInt(3, employee.getEage());
 				pstmt.setString(4, employee.getEmail());
 				pstmt.setString(5, employee.getMobile());
-
+				
 				int rowCount = pstmt.executeUpdate();
 				if (rowCount == 1) {
 					status = "success";
